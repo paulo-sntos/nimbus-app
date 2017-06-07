@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Nimbus"
+             x:Class="Nimbus.MainPage"
+             Title="Nimbus">
+
+    <!-- Barra de ação -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Login" Order="Secondary" Command="{Binding LoginCommand}"/>
+        <ToolbarItem Text="Configurações" Order="Secondary" Command="{Binding SettingsCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <!-- Conteúdo da tela-->
+    <StackLayout Orientation="Vertical" Style="{StaticResource NoTopPaddingStack}" >
+
+        <!-- Stack com as informações de carregamento -->
+        <StackLayout IsVisible="{Binding IsCarregando}" VerticalOptions="CenterAndExpand">
+            <Label Text="Carregando dados..." HorizontalTextAlignment="Center" Style="{StaticResource TitleLabel}" />
+            <ActivityIndicator Color="Black" IsRunning="{Binding IsCarregando}"/>
+        </StackLayout>
+
+
+        <!-- Stack com os dados de clima -->
+        <StackLayout IsVisible="{Binding IsDadosCarregados}">
+            <Label Text="{Binding CidadePais}" HorizontalTextAlignment="Center" Style="{StaticResource TitleLabel}" FontSize="30"/>
+            <Label Text="{Binding LabelLocalizacao}" HorizontalTextAlignment="Center" Style="{StaticResource DefaultLabel}"/>
+            <StackLayout Orientation="Horizontal" Padding="0, 15, 0, 0">
+                <Image HeightRequest="100" WidthRequest="100" VerticalOptions="Center">
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding LinkImagem}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="{Binding Clima}" Style="{StaticResource DefaultLabel}" FontAttributes="Bold"/>
+                    <Label Text="{Binding TemperaturaMaxima, StringFormat='Máxima: {0}°C'}" Style="{StaticResource DefaultLabel}" FontAttributes="Bold"/>
+                    <Label Text="{Binding TemperaturaMinima, StringFormat='Mínima: {0}°C'}" Style="{StaticResource DefaultLabel}" FontAttributes="Bold"/>
+                    <Label Text="{Binding Umidade, StringFormat='Umidade do ar: {0}%'}" Style="{StaticResource DefaultLabel}" FontAttributes="Bold"/>
+                    <Label Text="{Binding HoraAtualizacao, StringFormat='Atualizado às {0}.'}" Style="{StaticResource DefaultLabel}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <!--<Label Text="{Binding UsuarioConectado}" VerticalOptions="EndAndExpand"/>-->
+    </StackLayout>
+
+</ContentPage>

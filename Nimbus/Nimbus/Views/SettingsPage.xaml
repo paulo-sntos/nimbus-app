@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nimbus.Views.SettingsPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="Configurações">
+
+    <!-- Conteúdo da Tela -->
+    <StackLayout Style="{StaticResource DefaultStack}">
+
+        <StackLayout IsVisible="{Binding IsUsuarioConectado}">
+            <Label Text="Conectado como:" HorizontalOptions="Center"></Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <controls:CircleImage Source="{Binding ImagemUsuario, Mode=OneWay}" Aspect="AspectFit" WidthRequest="50" HeightRequest="50"/>
+                <Label Text="{Binding UsuarioConectado}" Style="{StaticResource TitleLabel}" VerticalOptions="Center"/>
+            </StackLayout>
+            <!--<StackLayout Padding="0,30,30,0">
+                <Button Text="Realizar logoff" Command="{Binding LogoffCommand}" HorizontalOptions="Center"/>
+            </StackLayout>-->
+        </StackLayout>
+
+        <StackLayout Style="{StaticResource DefaultStack}" VerticalOptions="End" Padding="0,0,20,20">
+            <Label Text="{Binding VersaoApp, StringFormat='Versão do App: {0}'}" HorizontalOptions="Center" Style="{StaticResource TitleLabel}"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nimbus.Views.LoginPage"
+             Title="{Binding Title}">
+
+    <StackLayout HorizontalOptions="Center">
+        <StackLayout Padding="0,30,0,0">
+            <Label Text="Clique no botão abaixo para conectar-se ao Facebook" Style="{StaticResource DefaultLabel}"/>
+            <Button Command="{Binding LoginCommand}" Text="Login" FontSize="Medium" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
